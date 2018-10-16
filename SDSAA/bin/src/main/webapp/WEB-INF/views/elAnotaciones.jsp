@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Notificaciones</title>
+    <title>Eliminar anotaciones</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/styles.min.css">
@@ -13,7 +13,7 @@
 <body>
     <div class="card">
         <div class="card-header">
-            <h3 class="mb-0">Sistema de atención de apoderados<button class="btn btn-secondary active btn-sm float-right" type="button" name="cerrarSesion">Cerrar Sesión</button></h3>
+            <h3 class="mb-0">Sistema de atención de apoderados<button class="btn btn-secondary active btn-sm float-right" type="button">Cerrar Sesión</button></h3>
         </div>
     </div>
     <div id="wrapper">
@@ -33,9 +33,30 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div>
-                            <h1>Notificaciones</h1>
+                            <h1>Eliminar anotación</h1>
                         </div>
-                        <p><strong>Suspensión de clases</strong><br>A todos los apoderados: las clases de mañana serán suspendidas debido a disturbios.&nbsp;<br><em>26/09/2018</em></p>
+                        <p></p>
+                    </div>
+                    <div class="col-md-12 offset-md-0">
+                        <div></div><label>Lista de anotaciones(?)</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 offset-md-0">
+                        <div class="input-group">
+                            <div class="input-group-prepend"></div>
+                            <div class="input-group-append"><button class="btn btn-dark" type="submit" name="Eliminar" class="Eliminar">Eliminar</button></div>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="col-md-12 offset-md-0">
+                        <div></div>
+                        <div class="input-group">
+                            <div class="input-group-prepend"></div>
+                            <div class="input-group-append"></div>
+                        </div>
+                        <div></div>
                     </div>
                 </div>
             </div>
