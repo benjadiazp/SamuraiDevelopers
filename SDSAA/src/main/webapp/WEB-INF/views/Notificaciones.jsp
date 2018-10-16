@@ -5,15 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Notificaciones</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
 </head>
 
 <body>
     <div class="card">
         <div class="card-header">
-            <h3 class="mb-0">Sistema de atenciÃ³n de apoderados<button class="btn btn-secondary active btn-sm float-right" type="button" name="cerrarSesion">Cerrar SesiÃ³n</button></h3>
+            <h3 class="mb-0">Sistema de atención de apoderados<button class="btn btn-secondary active btn-sm float-right" type="button" name="cerrarSesion">Cerrar Sesión</button></h3>
         </div>
     </div>
     <div id="wrapper">
@@ -35,7 +35,7 @@
                         <div>
                             <h1>Notificaciones</h1>
                         </div>
-                        <p><strong>SuspensiÃ³n de clases</strong><br>A todos los apoderados: las clases de maÃ±ana serÃ¡n suspendidas debido a disturbios.&nbsp;<br><em>26/09/2018</em></p>
+                        <p><strong>Suspensión de clases</strong><br>A todos los apoderados: las clases de mañana serán suspendidas debido a disturbios.&nbsp;<br><em>26/09/2018</em></p>
                     </div>
                 </div>
             </div>
