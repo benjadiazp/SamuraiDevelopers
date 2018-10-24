@@ -44,17 +44,27 @@
                       </a>
                   </li>
   
-                  <li th:replace="::menuItem ('/','home','home page','home','Home')">
+                  <li th:replace="::menuItem ('/','home','home page','home','Inicio')">
                       <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                       <span>Inicio</span>
                   </li>
+                  
+                  <li th:replace="::menuItem ('/owners/find','owners','find owners','search','Notificaciones')">
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                      <span>Notificaciones</span>
+                  </li>
+                  
+                  <li th:replace="::menuItem ('/Anotaciones.html','vets','veterinarians','th-list','Anotaciones')">
+                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                      <span>Anotaciones</span>
+                  </li>
   
-                  <li th:replace="::menuItem ('/owners/find','owners','find owners','search','Find owners')">
+                  <li th:replace="::menuItem ('/owners/find','owners','find owners','search','Buscar Apoderados')">
                       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                       <span>Buscar Apoderados</span>
                   </li>
   
-                  <li th:replace="::menuItem ('/vets.html','vets','veterinarians','th-list','Veterinarians')">
+                  <li th:replace="::menuItem ('/vets.html','vets','veterinarians','th-list','Profesores')">
                       <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                       <span>Profesores</span>
                   </li>
