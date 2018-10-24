@@ -41,7 +41,6 @@ CREATE TABLE owners (
   city       VARCHAR(80),
   telephone  VARCHAR(20)
 );
-CREATE INDEX owners_last_name ON owners (last_name);
 
 CREATE TABLE pets (
   id         INTEGER IDENTITY PRIMARY KEY,
