@@ -8,6 +8,12 @@ DROP TABLE owners IF EXISTS;
 DROP TABLE roles IF EXISTS;
 DROP TABLE users IF EXISTS;
 
+DROP TABLE Anotacion IF EXISTS;
+DROP TABLE Profesor IF EXISTS;
+DROP TABLE Alumno IF EXISTS;
+DROP TABLE Apoderado IF EXISTS;
+DROP TABLE Persona IF EXISTS;
+
 
 CREATE TABLE vets (
   id         INTEGER IDENTITY PRIMARY KEY,
@@ -80,3 +86,38 @@ CREATE TABLE roles (
 ALTER TABLE roles ADD CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username);
 CREATE INDEX fk_username_idx ON roles (username);
 
+create table apoderado
+(
+  idApoderado int not null primary key,
+  nombre    varchar(45) null,
+  apellido    varchar(45) null
+);
+
+create table alumno
+(
+  idAlumno int not null primary key,
+  nombre    varchar(45) null,
+  apellido    varchar(45) null,
+  idCurso     int not null,
+  idApoderado int not null,
+  foreign key (idApoderado) references Apoderado (idApoderado)
+);
+
+create table profesor
+(
+  idProfesor int not null primary key,
+  nombre    varchar(45) null,
+  apellido    varchar(45) null
+);
+
+create table anotacion
+(
+  idAnotacion int primary key,
+  texto       varchar(300) null,
+  tipo        tinyint      null,
+  fecha       date         null,
+  idAlumno    int          null,
+  idProfesor  int          null,
+  foreign key (idAlumno) references Alumno (idAlumno),
+  foreign key (idProfesor) references Profesor (idProfesor)
+);

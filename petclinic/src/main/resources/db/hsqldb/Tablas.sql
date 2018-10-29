@@ -2,7 +2,7 @@ create table Persona
 (
   idPersona int not null primary key,
   nombre    varchar(45) null,
-  clave     varchar(45) null
+  apellido    varchar(45) null
 );
 
 create table Apoderado
