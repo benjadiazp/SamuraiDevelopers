@@ -2,7 +2,8 @@ package org.springframework.samples.petclinic.rest;
 
 import java.io.IOException;
 
-import org.springframework.samples.petclinic.model.*;
+import org.springframework.samples.petclinic.model.Alumno;
+import org.springframework.samples.petclinic.model.Anotacion;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -11,16 +12,16 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-public class AnotacionDeserializer extends StdDeserializer<Anotacion> {
-
+public class JacksonCustomAnotacionDeserializer extends StdDeserializer<Anotacion>{
+	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
-	public AnotacionDeserializer() {
-		this(null);
-	}
-	
-	public AnotacionDeserializer(Class<Anotacion> a) {
-		super(a);
+	protected JacksonCustomAnotacionDeserializer(Class<?> vc) {
+		super(vc);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -43,5 +44,3 @@ public class AnotacionDeserializer extends StdDeserializer<Anotacion> {
 		return anotacion;
 	}
 }
-
-
