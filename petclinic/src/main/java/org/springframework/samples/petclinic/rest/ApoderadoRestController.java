@@ -45,7 +45,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @CrossOrigin(exposedHeaders = "errors, content-type")
-@RequestMapping("/api/Apoderados")
+@RequestMapping("/api/apoderados")
 public class ApoderadoRestController {
 
 	@Autowired

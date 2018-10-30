@@ -35,12 +35,12 @@ public class JpaAlumnoRepositoryImpl implements AlumnoRepository{
 	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Alumno> findAll() throws DataAccessException {
-		return this.em.createQuery("SELECT pet FROM Pet pet").getResultList();
+		
+		return this.em.createQuery("SELECT alumno FROM Alumno alumno").getResultList();
 	}
 
 	@Override
 	public void delete(Alumno alumno) throws DataAccessException {
-		//this.em.remove(this.em.contains(pet) ? pet : this.em.merge(pet));
 		String idAl = alumno.getId().toString();
 		this.em.createQuery("DELETE FROM Anotacion anotacion WHERE idAlumno=" + idAl).executeUpdate();
 		this.em.createQuery("DELETE FROM Alumno alumno WHERE id=" + idAl).executeUpdate();
