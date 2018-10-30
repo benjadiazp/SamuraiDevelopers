@@ -57,3 +57,11 @@ INSERT INTO users(username,password,enabled) VALUES ('admin','admin', true);
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_OWNER_ADMIN');
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_VET_ADMIN');
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_ADMIN');
+
+INSERT INTO apoderado VALUES (1, 'Apoderado1', 'Apellido1');
+INSERT INTO apoderado VALUES (2, 'Apoderado2', 'Apellido2');
+INSERT INTO apoderado VALUES (3, 'Apoderado3', 'Apellido3');
+
+INSERT INTO alumno VALUES (4, 'Alumno1', 'Apellido1', 1, 1);
+INSERT INTO alumno VALUES (5, 'Alumno2', 'Apellido2', 1, 2);
+INSERT INTO alumno VALUES (6, 'Alumno3', 'Apellido3', 2, 3);

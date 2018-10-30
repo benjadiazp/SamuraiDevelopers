@@ -12,23 +12,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.samples.petclinic.rest.JacksonCustomPetDeserializer;
-import org.springframework.samples.petclinic.rest.JacksonCustomPetSerializer;
+import org.springframework.samples.petclinic.rest.*;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "alumno")
-@JsonSerialize(using = JacksonCustomPetSerializer.class)
-@JsonDeserialize(using = JacksonCustomPetDeserializer.class)
+@JsonSerialize(using = AlumnoSerializer.class)
+@JsonDeserialize(using = AlumnoDeserializer.class)
 public class Alumno extends Persona {
 
     @ManyToOne
-    @JoinColumn(name = "idApoderado")
+    @JoinColumn(name = "idapoderado")
     private Apoderado apoderado;
     
-    @Column(name = "idCurso")
+    @Column(name = "idcurso")
     @NotEmpty
     private int curso;
 
@@ -57,6 +56,11 @@ public class Alumno extends Persona {
 
 	public void setAnotaciones(Set<Anotacion> anotaciones) {
 		this.anotaciones = anotaciones;
+	}
+
+	@Override
+	public String toString() {
+		return nombre + " " + apellido;
 	}
     
     

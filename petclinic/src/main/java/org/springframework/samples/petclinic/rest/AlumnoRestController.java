@@ -33,7 +33,7 @@ public class AlumnoRestController {
 
     @PreAuthorize( "hasRole(@roles.OWNER_ADMIN)" )
 	@RequestMapping(value = "/{alumnoId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Alumno> getPet(@PathVariable("alumnoId") int alumnoId){
+	public ResponseEntity<Alumno> getAlumno(@PathVariable("alumnoId") int alumnoId){
 		Alumno alumno = this.alumnoService.findAlumnoById(alumnoId);
 		if(alumno == null){
 			return new ResponseEntity<Alumno>(HttpStatus.NOT_FOUND);
@@ -45,7 +45,7 @@ public class AlumnoRestController {
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Collection<Alumno>> getAlumnos(){
 		Collection<Alumno> alumnos = this.alumnoService.findAllAlumnos();
-		System.out.println("Consulta lista.");
+		
 		if(alumnos.isEmpty()){
 			return new ResponseEntity<Collection<Alumno>>(HttpStatus.NOT_FOUND);
 		}
@@ -69,7 +69,7 @@ public class AlumnoRestController {
 
     @PreAuthorize( "hasRole(@roles.OWNER_ADMIN)" )
 	@RequestMapping(value = "/{alumnoId}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Alumno> updatePet(@PathVariable("AlumnoId") int AlumnoId, @RequestBody @Valid Alumno alumno, BindingResult bindingResult){
+	public ResponseEntity<Alumno> updateAlumno(@PathVariable("AlumnoId") int AlumnoId, @RequestBody @Valid Alumno alumno, BindingResult bindingResult){
 		BindingErrorsResponse errors = new BindingErrorsResponse();
 		HttpHeaders headers = new HttpHeaders();
 		if(bindingResult.hasErrors() || (alumno == null)){

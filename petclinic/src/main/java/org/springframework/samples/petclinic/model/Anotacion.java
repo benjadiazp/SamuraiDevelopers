@@ -17,11 +17,11 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonDeserialize(using = JacksonCustomOwnerDeserializer.class)
 public class Anotacion extends EntidadBase{
 	@ManyToOne
-    @JoinColumn(name = "idProfesor")
+    @JoinColumn(name = "idprofesor")
     private Profesor profesor;
 	
 	@ManyToOne
-    @JoinColumn(name = "idAlumno")
+    @JoinColumn(name = "idalumno")
     private Alumno alumno;
 
 	public Profesor getProfesor() {
