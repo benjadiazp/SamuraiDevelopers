@@ -88,36 +88,36 @@ CREATE INDEX fk_username_idx ON roles (username);
 
 create table apoderado
 (
-  idApoderado int not null primary key,
+  id int not null primary key,
   nombre    varchar(45) null,
   apellido    varchar(45) null
 );
 
 create table alumno
 (
-  idAlumno int not null primary key,
+  id int not null primary key,
   nombre    varchar(45) null,
   apellido    varchar(45) null,
   idCurso     int not null,
   idApoderado int not null,
-  foreign key (idApoderado) references Apoderado (idApoderado)
+  foreign key (idApoderado) references Apoderado (id)
 );
 
 create table profesor
 (
-  idProfesor int not null primary key,
+  id int not null primary key,
   nombre    varchar(45) null,
   apellido    varchar(45) null
 );
 
 create table anotacion
 (
-  idAnotacion int primary key,
+  id int primary key,
   texto       varchar(300) null,
   tipo        tinyint      null,
   fecha       date         null,
   idAlumno    int          null,
   idProfesor  int          null,
-  foreign key (idAlumno) references Alumno (idAlumno),
-  foreign key (idProfesor) references Profesor (idProfesor)
+  foreign key (idAlumno) references Alumno (id),
+  foreign key (idProfesor) references Profesor (id)
 );
