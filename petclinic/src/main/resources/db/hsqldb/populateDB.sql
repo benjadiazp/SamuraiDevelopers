@@ -62,6 +62,12 @@ INSERT INTO apoderado VALUES (1, 'Apoderado1', 'Apellido1');
 INSERT INTO apoderado VALUES (2, 'Apoderado2', 'Apellido2');
 INSERT INTO apoderado VALUES (3, 'Apoderado3', 'Apellido3');
 
-INSERT INTO alumno VALUES (4, 'Alumno1', 'Apellido1', 1, 1);
-INSERT INTO alumno VALUES (5, 'Alumno2', 'Apellido2', 1, 2);
-INSERT INTO alumno VALUES (6, 'Alumno3', 'Apellido3', 2, 3);
+INSERT INTO alumno VALUES (1, 'Alumno1', 'Apellido1', 1, 1);
+INSERT INTO alumno VALUES (2, 'Alumno2', 'Apellido2', 1, 2);
+INSERT INTO alumno VALUES (3, 'Alumno3', 'Apellido3', 2, 3);
+
+INSERT INTO profesor VALUES (1, 'Profesor1', 'Apellido1');
+INSERT INTO profesor VALUES (2, 'Profesor2', 'Apellido2');
+
+INSERT INTO anotacion VALUES (1,'Me faltó el respeto.', 0, '2013-01-04', 1, 1);
+INSERT INTO anotacion VALUES (2,'Rompió una mesa.', 0, '2013-01-04', 1, 1);

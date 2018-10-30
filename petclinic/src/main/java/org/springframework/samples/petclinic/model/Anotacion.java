@@ -9,16 +9,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.samples.petclinic.rest.JacksonCustomOwnerDeserializer;
-import org.springframework.samples.petclinic.rest.JacksonCustomOwnerSerializer;
+import org.springframework.samples.petclinic.rest.*;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "anotacion")
-@JsonSerialize(using = JacksonCustomOwnerSerializer.class) //cambiar?
-@JsonDeserialize(using = JacksonCustomOwnerDeserializer.class)
+@JsonSerialize(using = AnotacionSerializer.class) //cambiar?
+@JsonDeserialize(using = AnotacionDeserializer.class)
 public class Anotacion extends EntidadBase{
 	
 	@Column(name="texto")
