@@ -8,16 +8,16 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.samples.petclinic.rest.JacksonCustomOwnerDeserializer;
-import org.springframework.samples.petclinic.rest.JacksonCustomOwnerSerializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import org.springframework.samples.petclinic.rest.*;
+
 @Entity
 @Table(name = "profesor")
-@JsonSerialize(using = JacksonCustomOwnerSerializer.class)
-@JsonDeserialize(using = JacksonCustomOwnerDeserializer.class)
+@JsonSerialize(using = ProfesorSerializer.class)
+@JsonDeserialize(using = ProfesorDeserializer.class)
 public class Profesor extends Persona {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesor", fetch = FetchType.EAGER)
     private Set<Anotacion> anotaciones;

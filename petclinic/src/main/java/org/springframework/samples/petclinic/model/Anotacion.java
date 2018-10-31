@@ -1,11 +1,15 @@
 package org.springframework.samples.petclinic.model;
 
 import java.sql.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -39,7 +43,18 @@ public class Anotacion extends EntidadBase{
 	@ManyToOne
     @JoinColumn(name = "idprofesor")
     private Profesor profesor;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesor", fetch = FetchType.EAGER)
+    private Set<Anotacion> anotaciones;
 
+	public Set<Anotacion> getAnotaciones() {
+		return anotaciones;
+	}
+
+	public void setAnotaciones(Set<Anotacion> anotaciones) {
+		this.anotaciones = anotaciones;
+	}
+	
 	public String getTexto() {
 		return texto;
 	}
