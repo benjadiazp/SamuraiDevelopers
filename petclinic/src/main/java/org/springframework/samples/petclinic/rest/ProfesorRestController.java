@@ -43,7 +43,7 @@ public class ProfesorRestController {
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Collection<Profesor>> getProfesores(){
 		Collection<Profesor> profesores = this.profesorService.findAllProfesores();
-		
+		System.out.println(profesores.toString());
 		if(profesores.isEmpty()){
 			return new ResponseEntity<Collection<Profesor>>(HttpStatus.NOT_FOUND);
 		}
