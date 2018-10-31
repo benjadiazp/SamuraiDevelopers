@@ -17,7 +17,7 @@ public class AlumnoDeserializer extends StdDeserializer<Alumno>{
 		this(null);
 	}
 
-	public AlumnoDeserializer(Class<Pet> t) {
+	public AlumnoDeserializer(Class<Alumno> t) {
 		super(t);
 	}
 

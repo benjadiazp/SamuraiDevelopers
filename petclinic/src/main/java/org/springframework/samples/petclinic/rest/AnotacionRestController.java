@@ -26,7 +26,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @CrossOrigin(exposedHeaders = "errors, content-type")
-@RequestMapping("api/anotacion")
+@RequestMapping("api/anotaciones")
 public class AnotacionRestController {
 	
 	@Autowired
