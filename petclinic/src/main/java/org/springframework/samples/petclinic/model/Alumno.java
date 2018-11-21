@@ -27,9 +27,10 @@ public class Alumno extends Persona {
     @JoinColumn(name = "idapoderado")
     private Apoderado apoderado;
     
-    @Column(name = "idcurso")
+    @ManyToOne
+    @JoinColumn(name = "idcurso")
     @NotEmpty
-    private int curso;
+    private Curso curso;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno", fetch = FetchType.EAGER)
     private Set<Anotacion> anotaciones;
@@ -42,11 +43,11 @@ public class Alumno extends Persona {
 		this.apoderado = apoderado;
 	}
 
-	public int getCurso() {
+	public Curso getCurso() {
 		return curso;
 	}
 
-	public void setCurso(int curso) {
+	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
 

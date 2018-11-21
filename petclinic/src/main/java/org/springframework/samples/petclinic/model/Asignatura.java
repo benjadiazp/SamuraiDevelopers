@@ -18,14 +18,14 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonDeserialize(using = AsignaturaDeserializer.class)
 public class Asignatura extends EntidadBase {
 	
-	@Column(name = "nombreAsignatura")
+	@Column(name = "nombre")
 	@NotEmpty
 	private String nombre;
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "idProfesor")
-	private int idProfesor;
+	@JoinColumn(name = "idprofesor")
+	private Profesor profesor;
 	
 
 
@@ -39,12 +39,12 @@ public class Asignatura extends EntidadBase {
 
 
 
-	public int getIdProfesor() {
-		return idProfesor;
+	public Profesor getIdProfesor() {
+		return profesor;
 	}
 
-	public void setIdProfesor(int idProfesor) {
-		this.idProfesor = idProfesor;
+	public void setProfesor(Profesor profesor) {
+		this.profesor = profesor;
 	}
 	
 	

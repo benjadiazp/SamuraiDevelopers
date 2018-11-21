@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 @CrossOrigin(exposedHeaders = "errors, content-type")
-@RequestMapping("api/Curso")
+@RequestMapping("api/cursos")
 public class CursoRestController {
 
 	@Autowired

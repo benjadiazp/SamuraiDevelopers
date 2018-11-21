@@ -35,7 +35,7 @@ public class AsignaturaDeserializer extends StdDeserializer<Asignatura>{
 			asignatura.setId(asignaturaId);
 		}
 		asignatura.setNombre(nombre);
-		asignatura.setIdProfesor(profesor.getId());
+		asignatura.setProfesor(profesor);
 		return asignatura;
 	}
 }

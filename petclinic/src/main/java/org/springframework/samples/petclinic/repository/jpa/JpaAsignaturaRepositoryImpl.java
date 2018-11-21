@@ -35,13 +35,13 @@ public class JpaAsignaturaRepositoryImpl implements AsignaturaRepository{
 	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Asignatura> findAll() throws DataAccessException {
-		return this.em.createQuery("SELECT anotacion FROM Anotacion anotacion").getResultList();
+		return this.em.createQuery("SELECT asignatura FROM Asignatura asignatura").getResultList();
 	}
 
 	@Override
 	public void delete(Asignatura asignatura) throws DataAccessException {
 		String idAs = asignatura.getId().toString();
-		this.em.createQuery("DELETE FROM Anotacion anotacion WHERE id=" + idAs).executeUpdate();
+		this.em.createQuery("DELETE FROM Asignatura asignatura WHERE id=" + idAs).executeUpdate();
 		if (em.contains(asignatura)) {
 			em.remove(asignatura);
 		}

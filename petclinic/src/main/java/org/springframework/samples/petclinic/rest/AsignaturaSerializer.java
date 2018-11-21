@@ -30,7 +30,7 @@ public class AsignaturaSerializer extends StdSerializer<Asignatura>{
 		// revisar esta parte hacia abajo no estoy seguro si es correcto como lo deje
 		Profesor profesor = new Profesor();
 		jgen.writeObjectFieldStart("profesor");
-		jgen.writeNumberField("id", profesor.getId());
+		jgen.writeNumberField("idprofesor", profesor.getId());
 
 		jgen.writeEndObject();
 	

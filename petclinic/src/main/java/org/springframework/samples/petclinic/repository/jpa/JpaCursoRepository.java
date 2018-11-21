@@ -34,13 +34,13 @@ public class JpaCursoRepository implements CursoRepository{
 	@SuppressWarnings("unchecked")
 	@Override
 	public Collection<Curso> findAll() throws DataAccessException {
-		return this.em.createQuery("SELECT anotacion FROM Anotacion anotacion").getResultList();
+		return this.em.createQuery("SELECT curso FROM Curso curso").getResultList();
 	}
 
 	@Override
 	public void delete(Curso curso) throws DataAccessException {
 		String idCu = curso.getId().toString();
-		this.em.createQuery("DELETE FROM Anotacion anotacion WHERE id=" + idCu).executeUpdate();
+		this.em.createQuery("DELETE FROM Curso curso WHERE id=" + idCu).executeUpdate();
 		if (em.contains(curso)) {
 			em.remove(curso);
 		}

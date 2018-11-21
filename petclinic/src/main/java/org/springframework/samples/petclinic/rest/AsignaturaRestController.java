@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 @CrossOrigin(exposedHeaders = "errors, content-type")
-@RequestMapping("api/asignatura")
+@RequestMapping("api/asignaturas")
 public class AsignaturaRestController {
 	@Autowired
 	private AsignaturaService asignaturaService;
@@ -31,6 +31,7 @@ public class AsignaturaRestController {
 	@RequestMapping(value = "/{asignaturaId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Asignatura> getAlumno(@PathVariable("asignaturaId") int asignaturaId){
 		Asignatura asignatura = this.asignaturaService.findAsignaturaById(asignaturaId);
+		
 		if(asignatura == null){
 			return new ResponseEntity<Asignatura>(HttpStatus.NOT_FOUND);
 		}
@@ -41,7 +42,8 @@ public class AsignaturaRestController {
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Collection<Asignatura>> getAsignatura(){
 		Collection<Asignatura> asignatura = this.asignaturaService.findAllAsignatura();
-		
+		System.out.println("Consultando asignaturas...");
+		System.out.println("Asignatura: " + asignatura.toString());
 		if(asignatura.isEmpty()){
 			return new ResponseEntity<Collection<Asignatura>>(HttpStatus.NOT_FOUND);
 		}
@@ -79,7 +81,7 @@ public class AsignaturaRestController {
 		}
 		currentAsignatura.setId(asignatura.getId());
 		currentAsignatura.setNombre(asignatura.getNombre());
-		currentAsignatura.setIdProfesor(asignatura.getIdProfesor());
+		currentAsignatura.setProfesor(asignatura.getIdProfesor());
 		this.asignaturaService.saveAsignatura(currentAsignatura);
 		return new ResponseEntity<Asignatura>(currentAsignatura, HttpStatus.NO_CONTENT);
 	}
