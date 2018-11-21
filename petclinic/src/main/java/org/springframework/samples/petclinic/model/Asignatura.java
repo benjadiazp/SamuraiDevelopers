@@ -37,14 +37,17 @@ public class Asignatura extends EntidadBase {
 		this.nombre = nombre;
 	}
 
-
-
-	public Profesor getIdProfesor() {
+	public Profesor getProfesor() {
 		return profesor;
 	}
 
 	public void setProfesor(Profesor profesor) {
 		this.profesor = profesor;
+	}
+
+	@Override
+	public String toString() {
+		return "Asignatura [nombre=" + nombre + ", profesor=" + profesor + "]";
 	}
 	
 	

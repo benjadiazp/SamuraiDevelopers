@@ -81,7 +81,7 @@ public class AsignaturaRestController {
 		}
 		currentAsignatura.setId(asignatura.getId());
 		currentAsignatura.setNombre(asignatura.getNombre());
-		currentAsignatura.setProfesor(asignatura.getIdProfesor());
+		currentAsignatura.setProfesor(asignatura.getProfesor());
 		this.asignaturaService.saveAsignatura(currentAsignatura);
 		return new ResponseEntity<Asignatura>(currentAsignatura, HttpStatus.NO_CONTENT);
 	}

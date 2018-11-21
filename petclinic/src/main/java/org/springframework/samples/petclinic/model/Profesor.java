@@ -29,6 +29,11 @@ public class Profesor extends Persona {
 	public void setAnotaciones(Set<Anotacion> anotaciones) {
 		this.anotaciones = anotaciones;
 	}
+
+	@Override
+	public String toString() {
+		return "Profesor [anotaciones=" + anotaciones + "]";
+	}
 	
 	
 }

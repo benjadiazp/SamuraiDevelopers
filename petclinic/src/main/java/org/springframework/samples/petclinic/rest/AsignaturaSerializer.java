@@ -21,20 +21,21 @@ public class AsignaturaSerializer extends StdSerializer<Asignatura>{
 	@Override
 	public void serialize(Asignatura asignatura, JsonGenerator jgen, SerializerProvider provider) throws IOException {
 		jgen.writeStartObject();
+		System.out.println(asignatura.toString());
 		if (asignatura.getId() == null) {
 			jgen.writeNullField("id");
 		} else {
 			jgen.writeNumberField("id", asignatura.getId());
 		}
-		jgen.writeStringField("name", asignatura.getNombre());
-		// revisar esta parte hacia abajo no estoy seguro si es correcto como lo deje
+		jgen.writeStringField("nombre", asignatura.getNombre());
+
 		Profesor profesor = new Profesor();
+		profesor = asignatura.getProfesor();
 		jgen.writeObjectFieldStart("profesor");
 		jgen.writeNumberField("idprofesor", profesor.getId());
 
 		jgen.writeEndObject();
-	
-	
+		jgen.writeEndObject();
 	}
 
 }
