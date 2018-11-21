@@ -3,7 +3,6 @@ package org.springframework.samples.petclinic.model;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -11,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.samples.petclinic.rest.*;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -29,7 +27,6 @@ public class Alumno extends Persona {
     
     @ManyToOne
     @JoinColumn(name = "idcurso")
-    @NotEmpty
     private Curso curso;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno", fetch = FetchType.EAGER)

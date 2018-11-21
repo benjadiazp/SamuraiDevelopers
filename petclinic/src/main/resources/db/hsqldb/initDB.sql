@@ -95,15 +95,15 @@ CREATE INDEX fk_profesor3_idx ON asignatura (idProfesor);
 
 create table mensaje
 (
-	idMensaje int primary key,
+	id int primary key,
 	idEmisor int,
 	idReceptor int,
-	testo varchar(300),
+	texto varchar(300),
 	fecha date
 );
 
 ALTER TABLE mensaje ADD CONSTRAINT fk_emisor FOREIGN KEY (idEmisor) REFERENCES profesor (id);
 CREATE INDEX fk_emisor_idx ON mensaje (idEmisor);
 
-ALTER TABLE mensaje ADD CONSTRAINT fk_receptor FOREIGN KEY (idReceptor) REFERENCES profesor (id);
+ALTER TABLE mensaje ADD CONSTRAINT fk_receptor FOREIGN KEY (idReceptor) REFERENCES apoderado (id);
 CREATE INDEX fk_receptor_idx ON mensaje (idReceptor);

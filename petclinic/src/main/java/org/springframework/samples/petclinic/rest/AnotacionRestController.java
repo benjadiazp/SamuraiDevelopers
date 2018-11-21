@@ -2,7 +2,6 @@ package org.springframework.samples.petclinic.rest;
 
 import java.util.Collection;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.samples.petclinic.model.Alumno;
 import org.springframework.samples.petclinic.model.Anotacion;
-import org.springframework.samples.petclinic.service.AlumnoService;
 import org.springframework.samples.petclinic.service.AnotacionService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
@@ -88,5 +85,16 @@ public class AnotacionRestController {
 			currentAnotacion.setAlumno(anotacion.getAlumno());
 			this.anotacionService.saveAnotacion(currentAnotacion);
 			return new ResponseEntity<Anotacion>(currentAnotacion, HttpStatus.NO_CONTENT);
+		}
+		
+		@PreAuthorize( "hasRole(@roles.OWNER_ADMIN)" )
+		@RequestMapping(value="/{anotacionId}",method=RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+		public ResponseEntity<Anotacion> deleteAnotacion(@PathVariable("anotacionId") int anotacionId){
+			Anotacion anotacion = this.anotacionService.findAnotacionById(anotacionId);
+			if(anotacion==null) {
+				return new ResponseEntity<Anotacion>(HttpStatus.NOT_FOUND);
+			}
+			this.anotacionService.deleteAnotacion(anotacion);
+			return new ResponseEntity<Anotacion>(anotacion, HttpStatus.NO_CONTENT);
 		}
 }
