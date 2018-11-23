@@ -107,3 +107,27 @@ CREATE INDEX fk_emisor_idx ON mensaje (idEmisor);
 
 ALTER TABLE mensaje ADD CONSTRAINT fk_receptor FOREIGN KEY (idReceptor) REFERENCES apoderado (id);
 CREATE INDEX fk_receptor_idx ON mensaje (idReceptor);
+
+
+create table evaluacion
+(
+	id int primary key,
+  idAsignatura int,
+	fecha date
+);
+
+ALTER TABLE evaluacion ADD CONSTRAINT fk_Asignatura FOREIGN KEY (idAsignatura) REFERENCES Asignatura (id);
+CREATE INDEX fk_asignatura_idx ON Evaluacion (idAsignatura);
+
+create table evaluacion_alumno
+(
+	id int primary key,
+	idAsignatura int,
+  idAlumno int
+);
+
+ALTER TABLE evaluacion_alumno ADD CONSTRAINT fk_Asignatura2 FOREIGN KEY (idAsignatura) REFERENCES Asignatura (id);
+CREATE INDEX fk_asignatura2_idx ON evaluacion_alumno (idAsignatura);
+
+ALTER TABLE evaluacion_alumno ADD CONSTRAINT fk_Alumno3 FOREIGN KEY (idAlumno) REFERENCES Alumno (id);
+CREATE INDEX fk_alumno3_idx ON evaluacion_alumno (idAlumno);
