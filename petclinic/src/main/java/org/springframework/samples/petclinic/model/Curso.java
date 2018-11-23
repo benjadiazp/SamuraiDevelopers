@@ -23,6 +23,10 @@ public class Curso  extends EntidadBase  {
 	@Column(name = "clase")
 	@NotEmpty
 	private String clase;
+	
+	
+	
+	
 	public byte getGrado() {
 		return grado;
 	}
