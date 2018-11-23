@@ -122,6 +122,7 @@ CREATE INDEX fk_asignatura_idx ON Evaluacion (idAsignatura);
 create table evaluacion_alumno
 (
 	id int primary key,
+	nota int,
 	idAsignatura int,
   idAlumno int
 );
