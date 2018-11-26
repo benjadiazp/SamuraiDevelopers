@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.petclinic.model.Curso;
 import org.springframework.samples.petclinic.model.Evaluacion;
 import org.springframework.samples.petclinic.repository.EvaluacionRepository;
 import org.springframework.stereotype.Repository;
@@ -36,5 +37,13 @@ public class JpaEvaluacionRepositorylmpl implements EvaluacionRepository {
 	@Override
 	public Collection<Evaluacion> findAll() throws DataAccessException {
 		return this.ev.createQuery("Select evaluacion from Evaluacion evaluacion").getResultList();
+	}
+	@Override
+	public void delete(Evaluacion evaluacion) throws DataAccessException {
+		String idEv = evaluacion.getId().toString();
+		this.ev.createQuery("DELETE FROM Curso curso WHERE id=" + idEv).executeUpdate();
+		if (ev.contains(evaluacion)) {
+			ev.remove(evaluacion);
+		}
 	}
 }
