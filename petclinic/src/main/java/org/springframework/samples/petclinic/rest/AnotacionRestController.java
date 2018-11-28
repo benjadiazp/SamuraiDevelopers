@@ -60,7 +60,7 @@ public class AnotacionRestController {
 			return new ResponseEntity<Anotacion>(headers, HttpStatus.BAD_REQUEST);
 		}
 		this.anotacionService.saveAnotacion(anotacion);
-		headers.setLocation(ucBuilder.path("/api/Anotacion/{id}").buildAndExpand(anotacion.getId()).toUri());
+		headers.setLocation(ucBuilder.path("/api/anotaciones/{id}").buildAndExpand(anotacion.getId()).toUri());
 		return new ResponseEntity<Anotacion>(anotacion, headers, HttpStatus.CREATED);
 	}
 	

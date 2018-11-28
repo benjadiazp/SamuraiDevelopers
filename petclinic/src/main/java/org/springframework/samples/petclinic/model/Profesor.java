@@ -19,7 +19,7 @@ import org.springframework.samples.petclinic.rest.*;
 @JsonSerialize(using = ProfesorSerializer.class)
 @JsonDeserialize(using = ProfesorDeserializer.class)
 public class Profesor extends Persona {
-	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "profesor", fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesor", fetch = FetchType.EAGER)
     private Set<Anotacion> anotaciones;
 
 	public Set<Anotacion> getAnotaciones() {
