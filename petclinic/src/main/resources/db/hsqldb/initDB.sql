@@ -123,12 +123,12 @@ create table evaluacion_alumno
 (
 	id int primary key,
 	nota int,
-	idAsignatura int,
-  idAlumno int
+	idEvaluacion int,
+	idAlumno int
 );
 
-ALTER TABLE evaluacion_alumno ADD CONSTRAINT fk_Asignatura2 FOREIGN KEY (idAsignatura) REFERENCES Asignatura (id);
-CREATE INDEX fk_asignatura2_idx ON evaluacion_alumno (idAsignatura);
+ALTER TABLE evaluacion_alumno ADD CONSTRAINT fk_Evaluacion FOREIGN KEY (idEvaluacion) REFERENCES Evaluacion (id);
+CREATE INDEX fk_evaluacion_idx ON evaluacion_alumno (idEvaluacion);
 
 ALTER TABLE evaluacion_alumno ADD CONSTRAINT fk_Alumno3 FOREIGN KEY (idAlumno) REFERENCES Alumno (id);
 CREATE INDEX fk_alumno3_idx ON evaluacion_alumno (idAlumno);

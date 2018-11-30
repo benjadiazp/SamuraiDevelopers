@@ -30,16 +30,15 @@ public class AnotacionDeserializer extends StdDeserializer<Anotacion> {
 		Alumno alumno = new Alumno();
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = parser.getCodec().readTree(parser); //nodo anotacion
-		JsonNode alumno_node = node.get("alumno"); //nodo alumno
-		alumno = mapper.treeToValue(alumno_node, Alumno.class);
+		System.out.println(mapper == null);
+		System.out.println("Deserializer malo.");
 		int anotacionId = node.get("id").asInt();
 		String texto = node.get("texto").asText(null);
-		
 		if(!(anotacionId==0)) {
 			anotacion.setId(anotacionId);
+			anotacion.setTipo(1);
 		}
 		anotacion.setTexto(texto);
-		anotacion.setAlumno(alumno);
 		return anotacion;
 	}
 }
