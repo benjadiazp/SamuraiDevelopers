@@ -101,17 +101,10 @@ CREATE INDEX fk_asignatura_idx ON Evaluacion (idAsignatura);
 
 create table evaluacion_alumno
 (
-<<<<<<< HEAD
 	id           int identity primary key,
 	nota         int		  not null,
 	idEvaluacion int,
 	idAlumno     int
-=======
-	id int primary key,
-	nota int,
-	idEvaluacion int,
-	idAlumno int
->>>>>>> 5611d8db8de169d27c3b8d593dc74ede0f5a4908
 );
 
 ALTER TABLE evaluacion_alumno ADD CONSTRAINT fk_Evaluacion FOREIGN KEY (idEvaluacion) REFERENCES Evaluacion (id);
