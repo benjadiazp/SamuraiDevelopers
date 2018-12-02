@@ -41,6 +41,7 @@ public class AnotacionDeserializer extends StdDeserializer<Anotacion> {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = parser.getCodec().readTree(parser); //nodo anotacion
+<<<<<<< HEAD
 		JsonNode alumno_node = node.get("alumno");
 		JsonNode profesor_node = node.get("profesor");
 		alumno = mapper.treeToValue(alumno_node, Alumno.class);
@@ -58,14 +59,24 @@ public class AnotacionDeserializer extends StdDeserializer<Anotacion> {
 			throw new IOException(e);
 		}
 		
+=======
+		System.out.println(mapper == null);
+		System.out.println("Deserializer malo.");
+		int anotacionId = node.get("id").asInt();
+		String texto = node.get("texto").asText(null);
+>>>>>>> 5611d8db8de169d27c3b8d593dc74ede0f5a4908
 		if(!(anotacionId==0)) {
 			anotacion.setId(anotacionId);
+			anotacion.setTipo(1);
 		}
 		anotacion.setTexto(texto);
+<<<<<<< HEAD
 		anotacion.setTipo(tipo);
 		anotacion.setFecha(fecha);
 		anotacion.setAlumno(alumno);
 		anotacion.setProfesor(profesor);
+=======
+>>>>>>> 5611d8db8de169d27c3b8d593dc74ede0f5a4908
 		return anotacion;
 	}
 }
