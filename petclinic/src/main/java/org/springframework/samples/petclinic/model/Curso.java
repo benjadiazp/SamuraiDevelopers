@@ -17,12 +17,15 @@ public class Curso  extends EntidadBase  {
 	@Column(name = "grado")
 	@NotEmpty
 	private byte grado;
+	
 	@Column(name = "nivel")
 	@NotEmpty
 	private String nivel;
+	
 	@Column(name = "clase")
 	@NotEmpty
 	private String clase;
+	
 	public byte getGrado() {
 		return grado;
 	}
@@ -41,7 +44,5 @@ public class Curso  extends EntidadBase  {
 	public void setClase(String clase) {
 		this.clase = clase;
 	}
-	
-	
 	
 }

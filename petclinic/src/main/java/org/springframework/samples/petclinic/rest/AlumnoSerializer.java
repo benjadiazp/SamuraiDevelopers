@@ -1,8 +1,13 @@
 package org.springframework.samples.petclinic.rest;
 
 import java.io.IOException;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 
-import org.springframework.samples.petclinic.model.*;
+import org.springframework.samples.petclinic.model.Alumno;
+import org.springframework.samples.petclinic.model.Apoderado;
+import org.springframework.samples.petclinic.model.Curso;
+import org.springframework.samples.petclinic.model.Anotacion;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -24,13 +29,16 @@ public class AlumnoSerializer extends StdSerializer<Alumno>{
 
 	@Override
 	public void serialize(Alumno alumno, JsonGenerator jgen, SerializerProvider provider) throws IOException {
+		Format formatter = new SimpleDateFormat("yyyy/MM/dd");
+		
 		jgen.writeStartObject();
 		if (alumno.getId() == null) {
 			jgen.writeNullField("id");
 		} else {
 			jgen.writeNumberField("id", alumno.getId());
 		}
-		jgen.writeStringField("name", alumno.getNombre());
+		jgen.writeStringField("nombre", alumno.getNombre());
+		jgen.writeStringField("apellido", alumno.getApellido());
 
 		Apoderado apoderado = alumno.getApoderado();
 		jgen.writeObjectFieldStart("apoderado");
@@ -38,14 +46,26 @@ public class AlumnoSerializer extends StdSerializer<Alumno>{
 		jgen.writeStringField("nombre", apoderado.getNombre());
 		jgen.writeStringField("apellido", apoderado.getApellido());
 		jgen.writeEndObject();
+		
+		Curso curso = alumno.getCurso();
+		jgen.writeObjectFieldStart("curso");
+		jgen.writeNumberField("id", curso.getId());
+		jgen.writeNumberField("grado", curso.getGrado());
+		jgen.writeStringField("nivel", curso.getNivel());
+		jgen.writeStringField("clase", curso.getClase());
+		jgen.writeEndObject();
+		
 		jgen.writeArrayFieldStart("anotaciones");
 		for (Anotacion anotacion : alumno.getAnotaciones()) {
 			jgen.writeStartObject();
 			jgen.writeNumberField("id", anotacion.getId());
-			// Pendiente: rellenar con otros datos.
+			jgen.writeStringField("texto", anotacion.getTexto());
+			jgen.writeNumberField("tipo", anotacion.getTipo());
+			jgen.writeStringField("fecha",formatter.format(anotacion.getFecha()));
 			jgen.writeEndObject();
 		}
 		jgen.writeEndArray();
+		
 		jgen.writeEndObject();
 	}
 }

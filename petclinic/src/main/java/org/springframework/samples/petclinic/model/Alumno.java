@@ -1,5 +1,9 @@
 package org.springframework.samples.petclinic.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,8 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.beans.support.MutableSortDefinition;
+import org.springframework.beans.support.PropertyComparator;
 import org.springframework.samples.petclinic.rest.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -49,12 +56,20 @@ public class Alumno extends Persona {
 	}
 
 	public Set<Anotacion> getAnotaciones() {
+		if (anotaciones == null) {
+			anotaciones = new HashSet<Anotacion>();
+		}
 		return anotaciones;
 	}
-
+	
 	public void setAnotaciones(Set<Anotacion> anotaciones) {
 		this.anotaciones = anotaciones;
 	}
+	
+    public void addAnotacion(Anotacion anotacion) {
+        getAnotaciones().add(anotacion);
+        anotacion.setAlumno(this);
+    }
 
 	@Override
 	public String toString() {

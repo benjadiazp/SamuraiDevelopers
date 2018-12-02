@@ -22,13 +22,12 @@ public class Asignatura extends EntidadBase {
 	@NotEmpty
 	private String nombre;
 	
-	
 	@ManyToOne
 	@JoinColumn(name = "idprofesor")
+	@NotEmpty
 	private Profesor profesor;
 	
-
-
+	
 	public String getNombre() {
 		return nombre;
 	}

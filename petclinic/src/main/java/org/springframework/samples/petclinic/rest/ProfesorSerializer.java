@@ -32,7 +32,8 @@ public class ProfesorSerializer extends StdSerializer<Profesor>{
 		} else {
 			jgen.writeNumberField("id", profesor.getId());
 		}
-		jgen.writeStringField("name", profesor.getNombre());
+		jgen.writeStringField("nombre", profesor.getNombre());
+		jgen.writeStringField("apellido", profesor.getApellido());
 /*
 		Anotacion anotacion = (Anotacion) profesor.getAnotaciones();
 		jgen.writeObjectFieldStart("anotacion");

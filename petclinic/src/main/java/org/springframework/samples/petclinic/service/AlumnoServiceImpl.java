@@ -37,7 +37,6 @@ public class AlumnoServiceImpl implements AlumnoService{
 	@Override
 	@Transactional(readOnly = true)
 	public Collection<Alumno> findAllAlumnos() throws DataAccessException {
-		System.out.println("Probando consulta...");
 		return alumnoRepository.findAll();
 	}
 

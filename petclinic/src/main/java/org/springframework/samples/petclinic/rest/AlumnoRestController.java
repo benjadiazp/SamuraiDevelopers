@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+
 @RestController
 @CrossOrigin(exposedHeaders = "errors, content-type")
 @RequestMapping("api/alumnos")
@@ -35,6 +36,7 @@ public class AlumnoRestController {
 	@RequestMapping(value = "/{alumnoId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Alumno> getAlumno(@PathVariable("alumnoId") int alumnoId){
 		Alumno alumno = this.alumnoService.findAlumnoById(alumnoId);
+		
 		if(alumno == null){
 			return new ResponseEntity<Alumno>(HttpStatus.NOT_FOUND);
 		}
@@ -63,31 +65,31 @@ public class AlumnoRestController {
 			return new ResponseEntity<Alumno>(headers, HttpStatus.BAD_REQUEST);
 		}
 		this.alumnoService.saveAlumno(alumno);
-		headers.setLocation(ucBuilder.path("/api/Alumno/{id}").buildAndExpand(alumno.getId()).toUri());
+		
+		headers.setLocation(ucBuilder.path("/api/alumnos/{id}").buildAndExpand(alumno.getId()).toUri());
 		return new ResponseEntity<Alumno>(alumno, headers, HttpStatus.CREATED);
 	}
 
     @PreAuthorize( "hasRole(@roles.OWNER_ADMIN)" )
 	@RequestMapping(value = "/{alumnoId}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Alumno> updateAlumno(@PathVariable("AlumnoId") int AlumnoId, @RequestBody @Valid Alumno alumno, BindingResult bindingResult){
+	public ResponseEntity<Alumno> updateAlumno(@PathVariable("alumnoId") int alumnoId, @RequestBody @Valid Alumno alumno, BindingResult bindingResult){
 		BindingErrorsResponse errors = new BindingErrorsResponse();
 		HttpHeaders headers = new HttpHeaders();
+		
 		if(bindingResult.hasErrors() || (alumno == null)){
 			errors.addAllErrors(bindingResult);
 			headers.add("errors", errors.toJSON());
 			return new ResponseEntity<Alumno>(headers, HttpStatus.BAD_REQUEST);
 		}
-		Alumno currentAlumno = this.alumnoService.findAlumnoById(AlumnoId);
+		Alumno currentAlumno = this.alumnoService.findAlumnoById(alumnoId);
 		if(currentAlumno == null){
 			return new ResponseEntity<Alumno>(HttpStatus.NOT_FOUND);
 		}
 		currentAlumno.setId(alumno.getId());
-		currentAlumno.setCurso(alumno.getCurso());
-		currentAlumno.setId(alumno.getId());
-		currentAlumno.setApoderado(alumno.getApoderado());	
 		currentAlumno.setNombre(alumno.getNombre());
 		currentAlumno.setApellido(alumno.getApellido());
 		currentAlumno.setApoderado(alumno.getApoderado());
+		currentAlumno.setCurso(alumno.getCurso());
 		this.alumnoService.saveAlumno(currentAlumno);
 		return new ResponseEntity<Alumno>(currentAlumno, HttpStatus.NO_CONTENT);
 	}

@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize(using = ApoderadoSerializer.class)
 @JsonDeserialize(using = ApoderadoDeserializer.class)
 public class Apoderado extends Persona {
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apoderado", fetch = FetchType.EAGER)
     private Set<Alumno> alumnos;
 

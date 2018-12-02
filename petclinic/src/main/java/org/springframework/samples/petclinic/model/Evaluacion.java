@@ -14,13 +14,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "evaluacion")
 public class Evaluacion extends EntidadBase{
 	
-	@ManyToOne
-    @JoinColumn(name = "idasignatura")
-    private Asignatura asignatura;
-	
     @Column(name="fecha")
 	@NotEmpty
 	private Date fecha;
+    
+	@ManyToOne
+    @JoinColumn(name = "idasignatura")
+    private Asignatura asignatura;
 
 	public Asignatura getAsignatura() {
 		return asignatura;

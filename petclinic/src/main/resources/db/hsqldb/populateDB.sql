@@ -1,9 +1,3 @@
-INSERT INTO users(username,password,enabled) VALUES ('admin','admin', true);
-
-INSERT INTO roles VALUES (1,'admin', 'ROLE_OWNER_ADMIN');
-INSERT INTO roles VALUES (2,'admin', 'ROLE_VET_ADMIN');
-INSERT INTO roles VALUES (3,'admin', 'ROLE_ADMIN');
-
 INSERT INTO curso VALUES (1, 4, 'medio', 'A');
 INSERT INTO curso VALUES (2, 4, 'medio', 'B');
 
@@ -24,5 +18,12 @@ INSERT INTO anotacion VALUES (2,'Rompió una mesa.', 0, '2013-01-04', 1, 1);
 INSERT INTO asignatura VALUES (1, 'Matemáticas', 1);
 INSERT INTO asignatura VALUES (2, 'Lenguaje', 2);
 
-INSERT INTO mensaje VALUES (1, 1, 1,'Buenas tardes, le comunico que su hijo ha sido suspendido.', '2013-01-04');
-INSERT INTO mensaje VALUES (2, 1, 2, 'Hola, solo vengo a saludar.', '2013-01-04');
+INSERT INTO mensaje VALUES (1,'Buenas tardes, le comunico que su hijo ha sido suspendido.', '2013-01-04', 1, 1);
+INSERT INTO mensaje VALUES (2,'Hola, solo vengo a saludar.', '2013-01-04', 1, 2);
+
+
+INSERT INTO users(username,password,enabled) VALUES ('admin','admin', true);
+
+INSERT INTO roles VALUES (1,'admin', 'ROLE_OWNER_ADMIN');
+INSERT INTO roles VALUES (2,'admin', 'ROLE_VET_ADMIN');
+INSERT INTO roles VALUES (3,'admin', 'ROLE_ADMIN');
