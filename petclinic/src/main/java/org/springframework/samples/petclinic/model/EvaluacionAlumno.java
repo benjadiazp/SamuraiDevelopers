@@ -23,4 +23,28 @@ public class EvaluacionAlumno extends EntidadBase{
 	@ManyToOne
     @JoinColumn(name = "idevaluacion")
     private Evaluacion evaluacion;
+
+	public int getNota() {
+		return nota;
+	}
+
+	public void setNota(int nota) {
+		this.nota = nota;
+	}
+
+	public Alumno getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(Alumno alumno) {
+		this.alumno = alumno;
+	}
+
+	public Evaluacion getEvaluacion() {
+		return evaluacion;
+	}
+
+	public void setEvaluacion(Evaluacion evaluacion) {
+		this.evaluacion = evaluacion;
+	}
 }
