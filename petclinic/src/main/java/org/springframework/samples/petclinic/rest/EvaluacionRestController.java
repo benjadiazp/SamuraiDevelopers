@@ -41,7 +41,6 @@ public class EvaluacionRestController {
 	@RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Collection<Evaluacion>> getevaluacion(){
 		Collection<Evaluacion> evaluacion = this.evaluacionService.findAllEvaluacion();
-		
 		if(evaluacion.isEmpty()){
 			return new ResponseEntity<Collection<Evaluacion>>(HttpStatus.NOT_FOUND);
 		}
@@ -92,6 +91,7 @@ public class EvaluacionRestController {
 			if(evaluacion==null) {
 				return new ResponseEntity<Evaluacion>(HttpStatus.NOT_FOUND);
 			}
+			System.out.println("Eliminando... " + evaluacion.toString());
 			this.evaluacionService.deleteEvaluacion(evaluacion);
 			return new ResponseEntity<Evaluacion>(evaluacion, HttpStatus.NO_CONTENT);
 		}

@@ -38,6 +38,17 @@ public class Alumno extends Persona {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno", fetch = FetchType.EAGER)
     private Set<Anotacion> anotaciones;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno", fetch = FetchType.EAGER)
+    private Set<EvaluacionAlumno> evaluacionesAlumno;
+
+	public Set<EvaluacionAlumno> getEvaluacionesAlumno() {
+		return evaluacionesAlumno;
+	}
+
+	public void setEvaluacionesAlumno(Set<EvaluacionAlumno> evaluacionesAlumno) {
+		this.evaluacionesAlumno = evaluacionesAlumno;
+	}
 
 	public Apoderado getApoderado() {
 		return apoderado;

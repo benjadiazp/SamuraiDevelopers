@@ -1,6 +1,11 @@
 package org.springframework.samples.petclinic.model;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -26,6 +31,15 @@ public class Curso  extends EntidadBase  {
 	@NotEmpty
 	private String clase;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "curso", fetch = FetchType.EAGER)
+    private Set<Alumno> alumnos;
+	
+	public Set<Alumno> getAlumnos() {
+		return alumnos;
+	}
+	public void setAlumnos(Set<Alumno> alumnos) {
+		this.alumnos = alumnos;
+	}
 	public byte getGrado() {
 		return grado;
 	}

@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
 import org.springframework.context.annotation.Profile;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Curso;
@@ -40,10 +41,6 @@ public class JpaEvaluacionRepositorylmpl implements EvaluacionRepository {
 	}
 	@Override
 	public void delete(Evaluacion evaluacion) throws DataAccessException {
-		String idEv = evaluacion.getId().toString();
-		this.ev.createQuery("DELETE FROM Curso curso WHERE id=" + idEv).executeUpdate();
-		if (ev.contains(evaluacion)) {
-			ev.remove(evaluacion);
-		}
+		this.ev.remove(this.ev.contains(evaluacion) ? evaluacion : this.ev.merge(evaluacion));
 	}
 }

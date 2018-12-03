@@ -33,10 +33,10 @@ create table alumno
   idApoderado int          not null
 );
 
-ALTER TABLE alumno ADD CONSTRAINT fk_curso FOREIGN KEY (idCurso) REFERENCES curso (id);
+ALTER TABLE alumno ADD CONSTRAINT fk_curso FOREIGN KEY (idCurso) REFERENCES curso (id) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE INDEX fk_curso_idx ON alumno (idCurso);
 
-ALTER TABLE alumno ADD CONSTRAINT fk_apoderado FOREIGN KEY (idApoderado) REFERENCES apoderado (id);
+ALTER TABLE alumno ADD CONSTRAINT fk_apoderado FOREIGN KEY (idApoderado) REFERENCES apoderado (id) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE INDEX fk_apoderado_idx ON alumno (idApoderado);
 
 
@@ -60,7 +60,7 @@ create table anotacion
 ALTER TABLE anotacion ADD CONSTRAINT fk_alumno FOREIGN KEY (idAlumno) REFERENCES alumno (id);
 CREATE INDEX fk_alumno2_idx ON anotacion (idAlumno);
 
-ALTER TABLE anotacion ADD CONSTRAINT fk_profesor2 FOREIGN KEY (idProfesor) REFERENCES profesor (id);
+ALTER TABLE anotacion ADD CONSTRAINT fk_profesor2 FOREIGN KEY (idProfesor) REFERENCES profesor (id) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE INDEX fk_profesor2_idx ON anotacion (idProfesor);
 
 create table asignatura
@@ -70,7 +70,7 @@ create table asignatura
   idProfesor int          not null
 );
 
-ALTER TABLE asignatura ADD CONSTRAINT fk_profesor3 FOREIGN KEY (idProfesor) REFERENCES profesor (id);
+ALTER TABLE asignatura ADD CONSTRAINT fk_profesor3 FOREIGN KEY (idProfesor) REFERENCES profesor (id) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE INDEX fk_profesor3_idx ON asignatura (idProfesor);
 
 create table mensaje
@@ -82,10 +82,10 @@ create table mensaje
 	idReceptor int
 );
 
-ALTER TABLE mensaje ADD CONSTRAINT fk_emisor FOREIGN KEY (idEmisor) REFERENCES profesor (id);
+ALTER TABLE mensaje ADD CONSTRAINT fk_emisor FOREIGN KEY (idEmisor) REFERENCES profesor (id) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE INDEX fk_emisor_idx ON mensaje (idEmisor);
 
-ALTER TABLE mensaje ADD CONSTRAINT fk_receptor FOREIGN KEY (idReceptor) REFERENCES apoderado (id);
+ALTER TABLE mensaje ADD CONSTRAINT fk_receptor FOREIGN KEY (idReceptor) REFERENCES apoderado (id) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE INDEX fk_receptor_idx ON mensaje (idReceptor);
 
 
@@ -96,7 +96,7 @@ create table evaluacion
     idAsignatura int
 );
 
-ALTER TABLE evaluacion ADD CONSTRAINT fk_Asignatura FOREIGN KEY (idAsignatura) REFERENCES Asignatura (id);
+ALTER TABLE evaluacion ADD CONSTRAINT fk_Asignatura FOREIGN KEY (idAsignatura) REFERENCES Asignatura (id) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE INDEX fk_asignatura_idx ON Evaluacion (idAsignatura);
 
 create table evaluacion_alumno
@@ -107,10 +107,10 @@ create table evaluacion_alumno
 	idAlumno     int
 );
 
-ALTER TABLE evaluacion_alumno ADD CONSTRAINT fk_Evaluacion FOREIGN KEY (idEvaluacion) REFERENCES Evaluacion (id);
+ALTER TABLE evaluacion_alumno ADD CONSTRAINT fk_Evaluacion FOREIGN KEY (idEvaluacion) REFERENCES Evaluacion (id) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE INDEX fk_evaluacion_idx ON evaluacion_alumno (idEvaluacion);
 
-ALTER TABLE evaluacion_alumno ADD CONSTRAINT fk_Alumno3 FOREIGN KEY (idAlumno) REFERENCES Alumno (id);
+ALTER TABLE evaluacion_alumno ADD CONSTRAINT fk_Alumno3 FOREIGN KEY (idAlumno) REFERENCES Alumno (id) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE INDEX fk_alumno3_idx ON evaluacion_alumno (idAlumno);
 
 CREATE  TABLE users (
@@ -125,5 +125,5 @@ CREATE TABLE roles (
   username        VARCHAR(20) NOT NULL,
   role            VARCHAR(20) NOT NULL
 );
-ALTER TABLE roles ADD CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username);
+ALTER TABLE roles ADD CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE INDEX fk_username_idx ON roles (username);

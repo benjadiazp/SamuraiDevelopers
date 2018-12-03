@@ -21,6 +21,17 @@ import org.springframework.samples.petclinic.rest.*;
 public class Profesor extends Persona {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesor", fetch = FetchType.EAGER)
     private Set<Anotacion> anotaciones;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesor", fetch = FetchType.EAGER)
+    private Set<Asignatura> asignaturas;
+
+	public Set<Asignatura> getAsignaturas() {
+		return asignaturas;
+	}
+
+	public void setAsignaturas(Set<Asignatura> asignaturas) {
+		this.asignaturas = asignaturas;
+	}
 
 	public Set<Anotacion> getAnotaciones() {
 		return anotaciones;
