@@ -40,11 +40,7 @@ public class JpaAnotacionRepositoryImpl implements AnotacionRepository {
 
 	@Override
 	public void delete(Anotacion anotacion) throws DataAccessException {
-		String idAn = anotacion.getId().toString();
-		this.em.createQuery("DELETE FROM Anotacion anotacion WHERE id=" + idAn).executeUpdate();
-		if (em.contains(anotacion)) {
-			em.remove(anotacion);
-		}
+		this.em.remove(this.em.contains(anotacion) ? anotacion : this.em.merge(anotacion));
 		
 	}
 	

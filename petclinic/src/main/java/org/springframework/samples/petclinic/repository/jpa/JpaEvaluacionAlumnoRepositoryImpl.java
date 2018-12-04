@@ -37,10 +37,6 @@ public class JpaEvaluacionAlumnoRepositoryImpl implements EvaluacionAlumnoReposi
 	
 	@Override
 	public void delete(EvaluacionAlumno evaluacionAlumno) throws DataAccessException{
-		String idEvAl = evaluacionAlumno.getId().toString(); 
-		this.em.createQuery("DELETE FROM Evaluacion evaluacion WHERE idEvaluacion=" + idEvAl).executeUpdate();
-		this.em.createQuery("DELETE FROM Alumno alumno WHERE idAlumno="+ idEvAl).executeUpdate();
-		if(em.contains(evaluacionAlumno))
-			em.remove(evaluacionAlumno);
+		this.em.remove(this.em.contains(evaluacionAlumno) ? evaluacionAlumno : this.em.merge(evaluacionAlumno));
 	}
 }

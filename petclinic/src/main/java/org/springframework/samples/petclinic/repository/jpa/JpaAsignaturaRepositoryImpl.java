@@ -40,10 +40,6 @@ public class JpaAsignaturaRepositoryImpl implements AsignaturaRepository{
 
 	@Override
 	public void delete(Asignatura asignatura) throws DataAccessException {
-		String idAs = asignatura.getId().toString();
-		this.em.createQuery("DELETE FROM Asignatura asignatura WHERE id=" + idAs).executeUpdate();
-		if (em.contains(asignatura)) {
-			em.remove(asignatura);
-		}
+		this.em.remove(this.em.contains(asignatura) ? asignatura : this.em.merge(asignatura));
 	}
 }

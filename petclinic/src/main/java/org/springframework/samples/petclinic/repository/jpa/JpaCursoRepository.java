@@ -39,10 +39,6 @@ public class JpaCursoRepository implements CursoRepository{
 
 	@Override
 	public void delete(Curso curso) throws DataAccessException {
-		String idCu = curso.getId().toString();
-		this.em.createQuery("DELETE FROM Curso curso WHERE id=" + idCu).executeUpdate();
-		if (em.contains(curso)) {
-			em.remove(curso);
-		}
+		this.em.remove(this.em.contains(curso) ? curso : this.em.merge(curso));
 	}
 }

@@ -40,11 +40,6 @@ public class JpaAlumnoRepositoryImpl implements AlumnoRepository{
 
 	@Override
 	public void delete(Alumno alumno) throws DataAccessException {
-		String idAl = alumno.getId().toString();
-		this.em.createQuery("DELETE FROM Anotacion anotacion WHERE idAlumno=" + idAl).executeUpdate();
-		this.em.createQuery("DELETE FROM Alumno alumno WHERE id=" + idAl).executeUpdate();
-		if (em.contains(alumno)) {
-			em.remove(alumno);
-		}
+		this.em.remove(this.em.contains(alumno) ? alumno : this.em.merge(alumno));
 	}
 }
