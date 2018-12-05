@@ -7,13 +7,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.samples.petclinic.rest.EvaluacionAlumnoDeserializer;
 import org.springframework.samples.petclinic.rest.EvaluacionAlumnoSerializer;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "evaluacion_alumno")
 @JsonSerialize(using = EvaluacionAlumnoSerializer.class)
+@JsonDeserialize(using = EvaluacionAlumnoDeserializer.class)
 public class EvaluacionAlumno extends EntidadBase{
 	
 	@Column(name="nota")
