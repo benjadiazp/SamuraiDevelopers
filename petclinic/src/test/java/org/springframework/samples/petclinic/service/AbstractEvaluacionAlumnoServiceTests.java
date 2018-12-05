@@ -56,7 +56,7 @@ public abstract class AbstractEvaluacionAlumnoServiceTests {
         this.evaluacionAlumnoService.saveEvaluacionAlumno(evAlumno);
         assertThat(evAlumno.getId().intValue()).isNotEqualTo(0);
 
-       // evAlumno = this.evaluacionAlumnoService.findAllEvaluacionAlumno();
+        evaluacionAlumnos = this.evaluacionAlumnoService.findAllEvaluacionAlumno();
         assertThat(evaluacionAlumnos.size()).isEqualTo(tamano + 1);
     }
 

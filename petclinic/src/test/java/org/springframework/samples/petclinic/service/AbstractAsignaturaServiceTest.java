@@ -33,15 +33,15 @@ public abstract class AbstractAsignaturaServiceTest {
     	Asignatura asignatura = this.asignaturaService.findAsignaturaById(1);
     	assertThat(asignatura.getId()).isEqualTo(1);
     }
-
- /*   @Test
+    
+    @Test
     public void shouldFindAllAsignatura() {
     	Collection<Asignatura> asignaturas = this.asignaturaService.findAllAsignatura();
         Asignatura nombre = EntityUtils.getById(asignaturas, Asignatura.class, 1);
-        assertThat(nombre.getNombre()).isEqualTo("Lenjuage");
+        assertThat(nombre.getNombre()).isEqualTo("Matemáticas");
         Asignatura nombre1 = EntityUtils.getById(asignaturas, Asignatura.class, 3);
-        assertThat(nombre1.getNombre()).isEqualTo("Matematica");
-    }*/
+        assertThat(nombre1.getNombre()).isEqualTo("Historia");
+        }
 
 
 
