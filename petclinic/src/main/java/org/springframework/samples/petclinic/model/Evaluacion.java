@@ -1,6 +1,6 @@
 package org.springframework.samples.petclinic.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,9 +13,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.samples.petclinic.rest.*;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "evaluacion")
+@JsonSerialize(using = EvaluacionSerializer.class)
+@JsonDeserialize(using = EvaluacionDeserializer.class)
 public class Evaluacion extends EntidadBase{
 	
     @Column(name="fecha")
