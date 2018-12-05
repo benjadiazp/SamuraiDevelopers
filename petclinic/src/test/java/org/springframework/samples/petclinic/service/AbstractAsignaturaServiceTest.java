@@ -1,4 +1,7 @@
 package org.springframework.samples.petclinic.service;
+
+
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Collection;
@@ -8,8 +11,10 @@ import org.junit.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.*;
+import org.springframework.samples.petclinic.util.EntityUtils;
 import org.springframework.transaction.annotation.Transactional;
 public class AbstractAsignaturaServiceTest {
+	
 	@Autowired
     protected AsignaturaService asignaturaService;
 	
@@ -24,7 +29,7 @@ public class AbstractAsignaturaServiceTest {
     }
     
     @Test
-    public void shouldFindAlumnosById() {
+    public void shouldFindAsignaturaById() {
     	Asignatura asignatura = this.asignaturaService.findAsignaturaById(1);
     	assertThat(asignatura.getId()).isEqualTo(1);
     }

@@ -58,7 +58,7 @@ public class AlumnoRestControllerTests {
 
 	    	Curso curso = new Curso();
 	    	curso.setId(2);
-	    	curso.setGrado((byte)1);
+	    	curso.setGrado(1);
 	    	curso.setNivel("Medio");
 
 	    	Alumno alumno = new Alumno();

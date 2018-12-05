@@ -61,7 +61,7 @@ public class AsignaturaRestController {
 			return new ResponseEntity<Asignatura>(headers, HttpStatus.BAD_REQUEST);
 		}
 		this.asignaturaService.saveAsignatura(asignatura);
-		headers.setLocation(ucBuilder.path("/api/Alumno/{id}").buildAndExpand(asignatura.getId()).toUri());
+		headers.setLocation(ucBuilder.path("/api/asignaturas/{id}").buildAndExpand(asignatura.getId()).toUri());
 		return new ResponseEntity<Asignatura>(asignatura, headers, HttpStatus.CREATED);
 	}
 

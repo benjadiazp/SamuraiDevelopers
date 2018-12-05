@@ -65,7 +65,7 @@ public class AnotacionRestControllerTests {
 
 	    	Curso curso = new Curso();
 	    	curso.setId(2);
-	    	curso.setGrado((byte)1);
+	    	curso.setGrado(1);
 	    	curso.setNivel("Medio");
 
 	    	Alumno alumno = new Alumno();
@@ -102,7 +102,7 @@ public class AnotacionRestControllerTests {
 	    @Test
 	    @WithMockUser(roles="OWNER_ADMIN")
 	    public void testGetAnotacionSuccess() throws Exception {
-	    	given(this.anotacionService.findAnotacionById(3)).willReturn(anotaciones.get(0));
+	    	given(this.anotacionService.findAnotacionById(5)).willReturn(anotaciones.get(0));
 	        this.mockMvc.perform(get("/api/anotaciones/5")
 	        	.accept(MediaType.APPLICATION_JSON_VALUE))
 	            .andExpect(status().isOk())
@@ -149,7 +149,6 @@ public class AnotacionRestControllerTests {
 	    public void testCreateAnotacionSuccess() throws Exception {
 	    	Anotacion nuevaAnotacion = anotaciones.get(0);
 	    	nuevaAnotacion.setId(999);
-	    	
 	    	ObjectMapper mapper = new ObjectMapper();
 	    	String newAnotacionAsJSON = mapper.writeValueAsString(nuevaAnotacion);
 	    	this.mockMvc.perform(post("/api/anotaciones/")

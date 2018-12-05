@@ -25,7 +25,7 @@ public class CursoDeserializer extends StdDeserializer<Curso>{
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = parser.getCodec().readTree(parser);
 		int cursoId = node.get("id").asInt();
-		byte grado = (byte) node.get("grado").asDouble();
+		int grado = (int) node.get("grado").asInt();
 		String nivel = node.get("nivel").asText(null);
 		String clase = node.get("clase").asText();
 		if (!(cursoId == 0)) {

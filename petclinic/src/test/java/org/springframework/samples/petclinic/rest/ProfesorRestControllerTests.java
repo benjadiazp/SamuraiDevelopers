@@ -59,7 +59,7 @@ public class ProfesorRestControllerTests {
     	
     	profesor = new Profesor();
     	profesor.setId(4);
-    	profesor.setNombre("Profesor1");
+    	profesor.setNombre("Profesor2");
     	profesor.setApellido("Apellido1");
     	profesores.add(profesor);
     }
