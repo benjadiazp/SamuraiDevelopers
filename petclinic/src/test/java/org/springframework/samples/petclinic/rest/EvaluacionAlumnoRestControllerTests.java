@@ -43,10 +43,8 @@ public class EvaluacionAlumnoRestControllerTests {
 	
 	private MockMvc mockMvc;
 
-	//cambiar el evaluacionAlumno por evaluacionesAlumno
     private List<EvaluacionAlumno> evaluacionAlumnos;
 	
-    //Se inicializan 
     @Before
     public void initEvaluacion(){
     	this.mockMvc = MockMvcBuilders.standaloneSetup(evaluacionAlumnoRestController)
@@ -76,7 +74,6 @@ public class EvaluacionAlumnoRestControllerTests {
     	evaluacionAlumnos.add(evaluacionAlumno); 
     }
     
-    //Inicializar primer test: obtener evaluaciones de alumnos (prueba correcta) 
     @Test
     @WithMockUser(roles="OWNER_ADMIN")
     public void testGetEvaluacionAlumnoSuccess() throws Exception {

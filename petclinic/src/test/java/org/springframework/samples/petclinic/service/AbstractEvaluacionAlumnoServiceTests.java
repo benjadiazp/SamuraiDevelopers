@@ -36,11 +36,11 @@ public abstract class AbstractEvaluacionAlumnoServiceTests {
 	@Test
     public void shouldFindAllEvaluacionAlumno() {
     	Collection<EvaluacionAlumno> evaluacionAlumno = this.evaluacionAlumnoService.findAllEvaluacionAlumno();
-       // EvaluacionAlumno evAlumno1 = EntityUtils.getById(evAlumno1, EvaluacionAlumno.class, 1);
-       // assertThat(evAlumno1.getNota()).isEqualTo(22);
+    	EvaluacionAlumno evAlumno1 = EntityUtils.getById(evaluacionAlumno, EvaluacionAlumno.class, 1);
+    	assertThat(evAlumno1.getNota()).isEqualTo(22);
         
-       // EvaluacionAlumno evAlumno2 = EntityUtils.getById(evAlumno2, EvaluacionAlumno.class, 2);
-       // assertThat(evAlumno2.getNota()).isEqualTo(67);
+    	EvaluacionAlumno evAlumno2 = EntityUtils.getById(evaluacionAlumno, EvaluacionAlumno.class, 2);
+    	assertThat(evAlumno2.getNota()).isEqualTo(67);
     }
 
     @Test

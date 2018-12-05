@@ -2,6 +2,7 @@ package org.springframework.samples.petclinic.rest;
 import java.util.ArrayList;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -17,7 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.samples.petclinic.model.Alumno;
 import org.springframework.samples.petclinic.model.Apoderado;
 import org.springframework.samples.petclinic.model.Curso;
-
+import org.springframework.samples.petclinic.model.EvaluacionAlumno;
 import org.springframework.samples.petclinic.service.ApplicationTestConfig;
 import org.springframework.samples.petclinic.service.CursoService;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -26,6 +27,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -49,9 +52,7 @@ public class CursoRestControllerTest {
 	                .build();
 	        cursos = new ArrayList<Curso>();
 	        Curso curso = new Curso();  
-	      
-	        
-	        
+	     
 	        curso.setId(6);
 	        curso.setGrado(1);
 	    	curso.setNivel("Medio");
@@ -62,13 +63,9 @@ public class CursoRestControllerTest {
 	    	curso.setId(7);
 	    	curso.setGrado(2);
 	    	curso.setNivel("Basica");
-	    	cursos.add(curso);
-	    	
-
-	        
-	        
-	               
+	    	cursos.add(curso);                 
 	}
+	
 	@Test
     @WithMockUser(roles="OWNER_ADMIN")
     public void testGetCursoSuccess() throws Exception {
@@ -106,5 +103,43 @@ public class CursoRestControllerTest {
 	            .andExpect(jsonPath("$.[1].grado").value(2))
 	            .andExpect(jsonPath("$.[1].nivel").value("Basica"));
 	    }
+	   
+	   @Test
+	   @WithMockUser(roles="OWNER_ADMIN")
+	    public void testGetAllCursoNotFound() throws Exception {
+	    	cursos.clear();
+	    	given(this.cursoService.findAllCurso()).willReturn(cursos);
+	        this.mockMvc.perform(get("/api/cursos/")
+	        	.accept(MediaType.APPLICATION_JSON))
+	            .andExpect(status().isNotFound());
+	    }
+	   
+	   	@Test
+	    @WithMockUser(roles="OWNER_ADMIN")
+	    public void testCreateCursoSuccess() throws Exception {
+	    	Curso cursoNew = cursos.get(0); 
+	    	cursoNew.setId(10);
+	    	ObjectMapper mapper = new ObjectMapper();
+	    	String cursoNewJson = mapper.writeValueAsString(cursoNew);
+	    	this.mockMvc.perform(post("/api/cursos/")
+		    		.content(cursoNewJson).accept(MediaType.APPLICATION_JSON_VALUE).contentType(MediaType.APPLICATION_JSON_VALUE))
+		    		.andExpect(status().isCreated());
+	    }
+	   	
+	    @Test
+	    @WithMockUser(roles="OWNER_ADMIN")
+	    public void testCreateCursoError() throws Exception {
+	    	Curso cursoNew = cursos.get(0);
+
+	    	cursoNew.setId(null);
+	    	cursoNew.setGrado(9);
+	    	cursoNew.setNivel("Superior");
+	    	cursoNew.setClase("X");
+	    	ObjectMapper mapper = new ObjectMapper();
+	    	String cursoNewJson = mapper.writeValueAsString(cursoNew);
+	    	this.mockMvc.perform(post("/api/cursos/")
+	        		.content(cursoNewJson).accept(MediaType.APPLICATION_JSON_VALUE).contentType(MediaType.APPLICATION_JSON_VALUE))
+	        		.andExpect(status().isBadRequest());
+	     }
 
 }
