@@ -149,6 +149,7 @@ public class AnotacionRestControllerTests {
 	    public void testCreateAnotacionSuccess() throws Exception {
 	    	Anotacion nuevaAnotacion = anotaciones.get(0);
 	    	nuevaAnotacion.setId(999);
+	    	
 	    	ObjectMapper mapper = new ObjectMapper();
 	    	String newAnotacionAsJSON = mapper.writeValueAsString(nuevaAnotacion);
 	    	this.mockMvc.perform(post("/api/anotaciones/")
@@ -158,7 +159,7 @@ public class AnotacionRestControllerTests {
 
 	    @Test
 	    @WithMockUser(roles="OWNER_ADMIN")
-	    public void testCreateAlumnoError() throws Exception {
+	    public void testCreateAnotacionError() throws Exception {
 	    	Anotacion nuevaAnotacion = anotaciones.get(0);
 	    	nuevaAnotacion.setId(null);
 	    	nuevaAnotacion.setTexto(null);

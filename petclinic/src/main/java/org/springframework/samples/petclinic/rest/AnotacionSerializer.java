@@ -14,6 +14,11 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 public class AnotacionSerializer extends StdSerializer<Anotacion> {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public AnotacionSerializer() {
 		this(null);
 	}
