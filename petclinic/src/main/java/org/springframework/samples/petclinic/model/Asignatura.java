@@ -19,12 +19,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class Asignatura extends EntidadBase {
 	
 	@Column(name = "nombre")
-	@NotEmpty
 	private String nombre;
 	
 	@ManyToOne
 	@JoinColumn(name = "idprofesor")
-	@NotEmpty
 	private Profesor profesor;
 	
 	

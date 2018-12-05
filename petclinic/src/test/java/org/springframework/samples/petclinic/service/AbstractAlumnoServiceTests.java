@@ -30,7 +30,7 @@ public abstract class AbstractAlumnoServiceTests {
     }
     
     @Test
-    public void shouldFindAlumnosById() {
+    public void shouldFindAlumnoById() {
     	Alumno alumno = this.alumnoService.findAlumnoById(1);
     	assertThat(alumno.getId()).isEqualTo(1);
     }

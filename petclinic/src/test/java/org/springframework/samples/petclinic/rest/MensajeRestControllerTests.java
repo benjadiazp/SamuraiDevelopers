@@ -74,6 +74,7 @@ public class MensajeRestControllerTests {
 		mensaje.setApoderado(apoderado);
 		mensaje.setProfesor(profesor);
 		mensaje.setTexto("El hijo bueno para falta oe si");
+		mensajes.add(mensaje);
 		
 	}
 	

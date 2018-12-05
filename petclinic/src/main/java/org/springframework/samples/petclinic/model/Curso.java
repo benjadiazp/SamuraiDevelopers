@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class Curso  extends EntidadBase  {
 	@Column(name = "grado")
 	@NotEmpty
-	private byte grado;
+	private int grado;
 	
 	@Column(name = "nivel")
 	@NotEmpty
@@ -40,10 +40,10 @@ public class Curso  extends EntidadBase  {
 	public void setAlumnos(Set<Alumno> alumnos) {
 		this.alumnos = alumnos;
 	}
-	public byte getGrado() {
+	public int getGrado() {
 		return grado;
 	}
-	public void setGrado(byte grado) {
+	public void setGrado(int grado) {
 		this.grado = grado;
 	}
 	public String getNivel() {

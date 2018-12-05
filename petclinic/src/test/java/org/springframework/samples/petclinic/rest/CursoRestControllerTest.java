@@ -53,14 +53,14 @@ public class CursoRestControllerTest {
 	        
 	        
 	        curso.setId(6);
-	        curso.setGrado((byte)1);
+	        curso.setGrado(1);
 	    	curso.setNivel("Medio");
 	    	curso.setAlumnos(null);
 	    	cursos.add(curso);
 	    	
 	    	curso = new Curso();
 	    	curso.setId(7);
-	    	curso.setGrado((byte)2);
+	    	curso.setGrado(2);
 	    	curso.setNivel("Basica");
 	    	cursos.add(curso);
 	    	
@@ -78,7 +78,7 @@ public class CursoRestControllerTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType("application/json;charset=UTF-8"))
             .andExpect(jsonPath("$.id").value(6))
-            .andExpect(jsonPath("$.grado").value((byte)1))
+            .andExpect(jsonPath("$.grado").value(1))
             .andExpect(jsonPath("$.nivel").value("Medio"));
 
     }
@@ -99,11 +99,11 @@ public class CursoRestControllerTest {
 	            .andExpect(status().isOk())
 	            .andExpect(content().contentType("application/json;charset=UTF-8"))
 	            .andExpect(jsonPath("$.[0].id").value(6))
-	            .andExpect(jsonPath("$.[0].grado").value((byte)1))
+	            .andExpect(jsonPath("$.[0].grado").value(1))
 	            .andExpect(jsonPath("$.[0].nivel").value("Medio"))
 
 	            .andExpect(jsonPath("$.[1].id").value(7))
-	            .andExpect(jsonPath("$.[1].grado").value((byte)2))
+	            .andExpect(jsonPath("$.[1].grado").value(2))
 	            .andExpect(jsonPath("$.[1].nivel").value("Basica"));
 	    }
 
