@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.*;
 import org.springframework.samples.petclinic.util.EntityUtils;
 import org.springframework.transaction.annotation.Transactional;
-public class AbstractAsignaturaServiceTest {
+public abstract class AbstractAsignaturaServiceTest {
 	
 	@Autowired
     protected AsignaturaService asignaturaService;

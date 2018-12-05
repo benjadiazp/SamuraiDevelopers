@@ -8,7 +8,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -18,11 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.samples.petclinic.model.Alumno;
-import org.springframework.samples.petclinic.model.Apoderado;
-import org.springframework.samples.petclinic.model.Curso;
-import org.springframework.samples.petclinic.model.Mensaje;
-import org.springframework.samples.petclinic.model.Profesor;
+import org.springframework.samples.petclinic.model.*;
 import org.springframework.samples.petclinic.service.ApoderadoService;
 import org.springframework.samples.petclinic.service.ApplicationTestConfig;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -57,81 +52,29 @@ public class ApoderadoRestControllerTest {
 	    	apoderados = new ArrayList<Apoderado>();
 	    	
 	    	Apoderado apoderado = new Apoderado();
-	    	Alumno alumno = new Alumno();
-	    	Mensaje mensaje = new Mensaje();
-	    	Profesor profesor = new Profesor();
-	    	Curso curso = new Curso();
 	    	
-	    	curso.setId(7);
-	    	curso.setGrado((byte)7);
-	    	curso.setNivel("Basico");
-	    	
-	    	apoderado.setId(7);
-	        apoderado.setNombre("ApoderadoName");
-	        apoderado.setApellido("ApoderadoLastname");
-	    	
-	    	alumno.setId(7);
-	    	alumno.setNombre("AlumnoName");
-	    	alumno.setApellido("AlumnoLastname");
-	    	alumno.setApoderado(apoderado);
-	    	alumno.setCurso(curso);
-	    	
-	    	profesor.setId(7);
-	    	profesor.setNombre("ProfesorName");
-	    	profesor.setApellido("ProfesorLastname");
-	    	
-	    	mensaje.setId(7);
-	    	mensaje.setApoderado(apoderado);
-	    	mensaje.setProfesor(profesor);
-	    	mensaje.setTexto("Mensaje de prueba.");
-	    	mensaje.setFecha(new Date());
-	    	
-	    	//apoderado 2
-	    	Apoderado apoderado2 = new Apoderado();
-	    	Alumno alumno2 = new Alumno();
-	    	Mensaje mensaje2 = new Mensaje();
-	    	Profesor profesor2 = new Profesor();
-	    	Curso curso2 = new Curso();
-	    	
-	    	curso2.setId(5);
-	    	curso2.setGrado((byte)5);
-	    	curso2.setNivel("Basico");
-	    	
-	    	apoderado2.setId(5);
-	        apoderado2.setNombre("ApoderadoName2");
-	        apoderado2.setApellido("ApoderadoLastname2");
-	    	
-	    	alumno2.setId(5);
-	    	alumno2.setNombre("AlumnoName2");
-	    	alumno2.setApellido("AlumnoLastname2");
-	    	alumno2.setApoderado(apoderado2);
-	    	alumno2.setCurso(curso2);
-	    	
-	    	profesor2.setId(5);
-	    	profesor2.setNombre("ProfesorName2");
-	    	profesor2.setApellido("ProfesorLastname2");
-	    	
-	    	mensaje2.setId(5);
-	    	mensaje2.setApoderado(apoderado2);
-	    	mensaje2.setProfesor(profesor2);
-	    	mensaje2.setTexto("Mensaje de prueba 2.");
-	    	mensaje2.setFecha(new Date());
+	    	apoderado.setId(1);
+	        apoderado.setNombre("Apoderado1");
+	        apoderado.setApellido("Apellido");
 	    	
 	    	apoderados.add(apoderado);
-	    	apoderados.add(apoderado2);
+	    	apoderado.setId(2);
+	        apoderado.setNombre("Apoderado2");
+	        apoderado.setApellido("Apellido");
+	        apoderados.add(apoderado);
 	    	
 	    }
 	    
 	    @Test
 	    @WithMockUser(roles="OWNER_ADMIN")
 	    public void testGetApoderadoSuccess() throws Exception {
-	    	given(this.apoderadoService.findApoderadoById(7)).willReturn(apoderados.get(0));
-	        this.mockMvc.perform(get("/api/apoderados/7")
+	    	given(this.apoderadoService.findApoderadoById(2)).willReturn(apoderados.get(1));
+	        this.mockMvc.perform(get("/api/apoderados/2")
 	        	.accept(MediaType.APPLICATION_JSON_VALUE))
 	            .andExpect(status().isOk())
 	            .andExpect(content().contentType("application/json;charset=UTF-8"))
-	            .andExpect(jsonPath("$.id").value(7))
-	            .andExpect(jsonPath("$.nombre").value("ApoderadoName"));
+	            .andExpect(jsonPath("$.id").value(2))
+	            .andExpect(jsonPath("$.nombre").value("Apoderado2"));
 	    }
 	    
 	    @Test
@@ -147,14 +90,14 @@ public class ApoderadoRestControllerTest {
 	    @WithMockUser(roles="OWNER_ADMIN")
 	    public void testGetAllApoderadosSuccess() throws Exception {
 	    	given(this.apoderadoService.findAllApoderados()).willReturn(apoderados);
-	        this.mockMvc.perform(get("/api/apoderados/")
+	        this.mockMvc.perform(get("/api/apoderados")
 	        	.accept(MediaType.APPLICATION_JSON))
 	            .andExpect(status().isOk())
 	            .andExpect(content().contentType("application/json;charset=UTF-8"))
 	            .andExpect(jsonPath("$.[0].id").value(7))
-	            .andExpect(jsonPath("$.[0].nombre").value("ApoderadoName"))
+	            .andExpect(jsonPath("$.[0].nombre").value("Apoderado1"))
 	            .andExpect(jsonPath("$.[1].id").value(5))
-	            .andExpect(jsonPath("$.[1].nombre").value("ApoderadoName2"));
+	            .andExpect(jsonPath("$.[1].nombre").value("Apoderado2"));
 	    }
 	    
 	    @Test

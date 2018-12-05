@@ -12,7 +12,7 @@ import org.springframework.samples.petclinic.model.Profesor;
 import org.springframework.samples.petclinic.util.EntityUtils;
 import org.springframework.transaction.annotation.Transactional;
 
-public class AbstractProfesorServiceTests {
+public abstract class AbstractProfesorServiceTests {
 	@Autowired
     protected ProfesorService profesorService;
 

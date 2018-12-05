@@ -20,7 +20,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class EvaluacionAlumno extends EntidadBase{
 	
 	@Column(name="nota")
-	@NotEmpty
 	private int nota;
 	
 	@ManyToOne
