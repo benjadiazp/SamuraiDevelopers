@@ -20,7 +20,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonDeserialize(using = CursoDeserializer.class)
 public class Curso  extends EntidadBase  {
 	@Column(name = "grado")
-	@NotEmpty
 	private int grado;
 	
 	@Column(name = "nivel")

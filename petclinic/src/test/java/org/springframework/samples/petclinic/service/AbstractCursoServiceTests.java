@@ -49,7 +49,8 @@ public abstract class AbstractCursoServiceTests {
         int tamano = cursos.size();
 
         Curso curso = new Curso();
-        curso.setGrado(2);
+        curso.setId(999);
+        curso.setGrado(4);
         curso.setNivel("medio");
         curso.setClase("A");
         this.cursoService.saveCurso(curso);
