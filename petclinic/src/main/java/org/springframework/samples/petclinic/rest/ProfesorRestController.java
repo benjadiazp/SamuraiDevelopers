@@ -82,7 +82,6 @@ public class ProfesorRestController {
 		currentProfesor.setId(profesor.getId());
 		currentProfesor.setNombre(profesor.getNombre());
 		currentProfesor.setApellido(profesor.getApellido());
-		currentProfesor.setAnotaciones(profesor.getAnotaciones());
 		this.profesorService.saveProfesor(currentProfesor);
 		return new ResponseEntity<Profesor>(currentProfesor, HttpStatus.NO_CONTENT);
 	}

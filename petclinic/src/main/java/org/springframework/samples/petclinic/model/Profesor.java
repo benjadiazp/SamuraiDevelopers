@@ -19,32 +19,5 @@ import org.springframework.samples.petclinic.rest.*;
 @JsonSerialize(using = ProfesorSerializer.class)
 @JsonDeserialize(using = ProfesorDeserializer.class)
 public class Profesor extends Persona {
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesor", fetch = FetchType.EAGER)
-    private Set<Anotacion> anotaciones;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "profesor", fetch = FetchType.EAGER)
-    private Set<Asignatura> asignaturas;
-
-	public Set<Asignatura> getAsignaturas() {
-		return asignaturas;
-	}
-
-	public void setAsignaturas(Set<Asignatura> asignaturas) {
-		this.asignaturas = asignaturas;
-	}
-
-	public Set<Anotacion> getAnotaciones() {
-		return anotaciones;
-	}
-
-	public void setAnotaciones(Set<Anotacion> anotaciones) {
-		this.anotaciones = anotaciones;
-	}
-
-	@Override
-	public String toString() {
-		return "Profesor [anotaciones=" + anotaciones + "]";
-	}
-	
 	
 }

@@ -55,17 +55,6 @@ public class AlumnoSerializer extends StdSerializer<Alumno>{
 		jgen.writeStringField("clase", curso.getClase());
 		jgen.writeEndObject();
 		
-		jgen.writeArrayFieldStart("anotaciones");
-		for (Anotacion anotacion : alumno.getAnotaciones()) {
-			jgen.writeStartObject();
-			jgen.writeNumberField("id", anotacion.getId());
-			jgen.writeStringField("texto", anotacion.getTexto());
-			jgen.writeNumberField("tipo", anotacion.getTipo());
-			jgen.writeStringField("fecha",formatter.format(anotacion.getFecha()));
-			jgen.writeEndObject();
-		}
-		jgen.writeEndArray();
-		
 		jgen.writeEndObject();
 	}
 }

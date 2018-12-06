@@ -38,17 +38,6 @@ public class ApoderadoSerializer extends StdSerializer<Apoderado>{
 		jgen.writeStringField("apellido", apoderado.getApellido());
 		// write alumnos array
 		jgen.writeArrayFieldStart("alumnos");
-		for (Alumno alumno : apoderado.getAlumnos()) {
-			jgen.writeStartObject(); // alumno
-			if (alumno.getId() == null) {
-				jgen.writeNullField("id");
-			} else {
-				jgen.writeNumberField("id", alumno.getId());
-			}
-			jgen.writeStringField("nombre", alumno.getNombre());
-			jgen.writeStringField("apellido", alumno.getApellido());
-			jgen.writeEndObject(); // alumno
-		}
 		jgen.writeEndArray(); // alumnos
 		jgen.writeEndObject(); // apoderado
 		
